@@ -1,0 +1,117 @@
+.main-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+#content-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.task-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+.inputs {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 50px;
+}
+
+html {
+  background-color: antiquewhite;
+}
+
+.text-task {
+  margin-right: 50px;
+  width: 150px;
+}
+
+.cost-task {
+  width: 100px;
+  margin-left: 50px;
+}
+
+.date {
+  width: 150px;
+}
+
+.task-div {
+  display: flex;
+}
+
+.header__task {
+  display: flex;
+}
+
+input {
+  margin-right: 10px;
+  border-radius: 5px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+
+.buttonAdd {
+  display: flex;
+  background-color: green;
+}
+
+button {
+  display: contents;
+  border-radius: 3px;
+}
+
+.Delete {
+  display: block;
+  background-color: green;
+}
+
+@media (max-width: 480px) {
+  html {
+    background-color: rgb(177, 192, 192);
+  }
+
+  .inputs {
+    display: block;
+  }
+
+  .buttonAdd {
+    margin-left: 110px;
+    background-color: aquamarine;
+    margin-top: 10px;
+  }
+
+  .task-div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .cost-task {
+    margin-left: 200px;
+    margin-top: -10px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+  .buttonEdit {
+    margin-top: -65px;
+  }
+
+  button {
+    display: flex;
+  }
+
+}

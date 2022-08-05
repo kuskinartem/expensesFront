@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Учет расходов</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="main-block">
+      <h1>Учет Расходов</h1>
+      <div class="inputs">
+        <div>
+          <h4>Куда было потраченно</h4>
+          <input type="text" id="add-task" placeholder="Куда было потраченно" />
+        </div>
+        <div>
+          <h4>Сколько было потраченно</h4>
+          <input
+            type="number"
+            id="add-task2"
+            placeholder="Сколько было потрачено"
+          />
+        </div>
+        <button onclick="taskAdd()" class="buttonAdd">Добавить</button>
+      </div>
+      <div id="content-page"></div>
+      <button onclick="allDelete()" class="Delete">Удалить все</button>
+    </div>
+  </body>
+</html>
