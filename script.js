@@ -21,8 +21,8 @@ window.onload = async () => {
 
 const taskAdd = async () => {
   try {
-    const input = document.getElementById("add-task");
-    const input2 = document.getElementById("add-task2")
+    const inputText = document.getElementById('add-task');
+    const inputMoney = document.getElementById('add-task2')
     if (!input) {
       return;
     }
@@ -31,16 +31,16 @@ const taskAdd = async () => {
       method: 'POST',
       headers: fetchHeaders,
       body: JSON.stringify({
-        text: input.value,
-        cost: input2.value,
-        date: new Date().toLocaleDateString('ru')
+        text: inputText.value,
+        cost: inputMoney.value,
+        date: new Date().toLocaleDateString()
       })
     });
 
     const result = await resp.json();
     allTasks.unshift(result);
-    input.value = '';
-    input2.value = '';
+    inputText.value = '';
+    inputMoney.value = '';
     render();
   } catch {
     console.error('Task send error');
@@ -74,8 +74,8 @@ const onDeleteTask = async (_id) => {
 
 const updateTaskText = async (_id) => {
   try {
-    const input = document.querySelector(`#task-${_id} input`);
-    if (!input || !input.value) {
+    const inputText = document.querySelector(`#task-${_id} input`);
+    if (!inputText || !inputText.value) {
       return;
     }
 
@@ -83,7 +83,7 @@ const updateTaskText = async (_id) => {
       method: 'PATCH',
       headers: fetchHeaders,
       body: JSON.stringify({
-        text: input.value,
+        text: inputText.value,
       })
     });
 
@@ -102,8 +102,8 @@ const updateTaskText = async (_id) => {
 
 const updateTaskCost = async (_id) => {
   try {
-    const input = document.querySelector(`#task__cost_input-${_id}`);
-    if (!input || !input.value) {
+    const inputCost = document.querySelector(`#task__cost_input-${_id}`);
+    if (!inputCost || !inputCost.value) {
       return;
     }
 
@@ -111,7 +111,7 @@ const updateTaskCost = async (_id) => {
       method: 'PATCH',
       headers: fetchHeaders,
       body: JSON.stringify({
-        cost: input.value,
+        cost: inputCost.value,
       })
     });
 
@@ -130,19 +130,19 @@ const updateTaskCost = async (_id) => {
 
 const updateTaskDate = async (_id) => {
   try {
-    const input = document.querySelector(`#task__date_input-${_id}`);
-    if (!input || !input.value) {
+    const inputDate = document.querySelector(`#task__date_input-${_id}`);
+    if (!inputDate || !inputDate.value) { 
       return;
     }
 
-    const resp = await fetch(`${url}/task/${_id}/date`, {
+    const resp = await fetch(`${url}/task/${_id}/date`, { //Если в result прийдет {}  он вернет прежнее время
       method: 'PATCH',
       headers: fetchHeaders,
       body: JSON.stringify({
-        date: input.value
+        date: inputDate.value
       })
     });
-    const result = await resp.json();
+    const result = await resp.json(); 
 
     allTasks.forEach(item => {
       if (item._id === result._id) {
@@ -222,14 +222,14 @@ const editTask = (item) => {
 const render = () => {
   const content = document.getElementById('content-page');
   content.replaceChildren([]);
-  let allSum = document.createElement('h4');
+  let sumCost = document.createElement('h4');
   let sum = 0;
   for (let i = 0; i < allTasks.length; i++) {
     sum += allTasks[i].cost;
   }
-  allSum.className = 'allSum';
-  allSum.innerText = `Итого: ${sum} p`;
-  content.append(allSum);
+  sumCost.className = 'sumCost';
+  sumCost.innerText = `Итого: ${sum} p`;
+  content.append(sumCost);
 
 
   allTasks.forEach((item, index) => {
